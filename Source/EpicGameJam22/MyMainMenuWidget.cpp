@@ -1,20 +1,20 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MyUserWidget.h"
+#include "MyMainMenuWidget.h"
 #include "Components/Button.h"
 #include "Components/CanvasPanel.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-bool UMyUserWidget::Initialize()
+bool UMyMainMenuWidget::Initialize()
 {
 	Super::Initialize();
-	StartButton->OnClicked.AddDynamic(this, &UMyUserWidget::StartButtonClicked);
-	ExitButton->OnClicked.AddDynamic(this, &UMyUserWidget::ExitButtonClicked);
+	StartButton->OnClicked.AddDynamic(this, &UMyMainMenuWidget::StartButtonClicked);
+	ExitButton->OnClicked.AddDynamic(this, &UMyMainMenuWidget::ExitButtonClicked);
 	return true;
 }
 
-void UMyUserWidget::StartButtonClicked()
+void UMyMainMenuWidget::StartButtonClicked() 
 {
 	TArray<UWidget*> widgets;
 	widgets = Canvas->GetAllChildren();
@@ -22,7 +22,7 @@ void UMyUserWidget::StartButtonClicked()
 		widgets[x]->SetVisibility(ESlateVisibility::Hidden);
 }
 
-void UMyUserWidget::ExitButtonClicked()
+void UMyMainMenuWidget::ExitButtonClicked()
 {
 	//FGenericPlatformMisc::RequestExit(true);
 	UKismetSystemLibrary::QuitGame(ExitButton, 0, EQuitPreference::Quit, false);

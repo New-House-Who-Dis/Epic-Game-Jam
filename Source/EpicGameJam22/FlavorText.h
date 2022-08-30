@@ -4,34 +4,27 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "MyUserWidget.generated.h"
+#include "FlavorText.generated.h"
 
 /**
- *
+ * 
  */
 UCLASS()
-class EPICGAMEJAM22_API UMyUserWidget : public UUserWidget
+class EPICGAMEJAM22_API UFlavorText : public UUserWidget
 {
 	GENERATED_BODY()
 
 		virtual bool Initialize();
 
 	UPROPERTY(meta = (BindWidget))
+		class UTextBlock* Description;
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton* Close;
+
+	UPROPERTY(meta = (BindWidget))
 		class UCanvasPanel* Canvas;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton* StartButton;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton* OptionsButton;
-
-	UPROPERTY(meta = (BindWidget))
-		class UButton* ExitButton;
-
+	
 	UFUNCTION()
-		void StartButtonClicked();
-
-	UFUNCTION()
-		void ExitButtonClicked();
-
+		void ExitUI();
 };
